@@ -1,17 +1,16 @@
 import cv2
-def display_image(image, title="Image"):
-    cv2.imshow(title, image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
-image_path = "image.webp"
-img = cv2.imread(image_path)
+image_path = 'photo.jpg'
+img =cv2.imread(image_path)
 
 if img is None:
-    print(f"Error: Unable to load image {image_path}. Please check the file path.")
+    print(f"Error: Unable to load the image '{image_path}'. Please check the file path")
+
 blurred_img_gaussian = cv2.GaussianBlur(img, (11,11), 0)
 blurred_img_median = cv2.medianBlur(img, 5)
 
-display_image(img, "Original Image")
-display_image(blurred_img_gaussian, "Gaussian Blur Image")
-display_image(blurred_img_median, "Median Blur Image")
+cv2.imshow("Original Image", img)
+cv2.imshow("Gaussian-blurred Image", blurred_img_gaussian)
+cv2.imshow("Median-blurred Image", blurred_img_median)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
